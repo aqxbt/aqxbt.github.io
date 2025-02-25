@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HTTP | HTTP报文 | 安全小白团</title><meta name="author" content="安全小白团"><meta name="copyright" content="安全小白团"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="noob-sec安全小白团,小白学习基地,教你渗透测试如何从入门到放弃。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP | HTTP报文">
+<meta property="og:url" content="https://aqxbt.github.io/HTTP-HTTP%E6%8A%A5%E6%96%87/index.html">
+<meta property="og:site_name" content="安全小白团">
+<meta property="og:description" content="noob-sec安全小白团,小白学习基地,教你渗透测试如何从入门到放弃。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aqxbt.github.io/img/default_cover.jpg">
+<meta property="article:published_time" content="2019-01-12T06:37:04.000Z">
+<meta property="article:modified_time" content="2020-07-08T02:54:45.055Z">
+<meta property="article:author" content="安全小白团">
+<meta property="article:tag" content="安全小白团，noobsec">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aqxbt.github.io/img/default_cover.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "HTTP | HTTP报文",
+  "url": "https://aqxbt.github.io/HTTP-HTTP%E6%8A%A5%E6%96%87/",
+  "image": "https://aqxbt.github.io/img/default_cover.jpg",
+  "datePublished": "2019-01-12T06:37:04.000Z",
+  "dateModified": "2020-07-08T02:54:45.055Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "安全小白团",
+      "url": "https://aqxbt.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://aqxbt.github.io/HTTP-HTTP%E6%8A%A5%E6%96%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKG8-pUVAOSCViijEForpmpMy1zRFztsxeiffYayqZg"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6744915718473679',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HTTP | HTTP报文',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/default_cover.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">安全小白团</span></a><a class="nav-page-title" href="/"><span class="site-name">HTTP | HTTP报文</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">HTTP | HTTP报文</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-01-12T06:37:04.000Z" title="发表于 2019-01-12 14:37:04">2019-01-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-07-08T02:54:45.055Z" title="更新于 2020-07-08 10:54:45">2020-07-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HTTP/">HTTP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>&#160; &#160; &#160; &#160;客户端与服务器端之间的通信，通过HTTP协议，以HTTP报文的形式来实现数据的交互。</p>
+<p>&#160; &#160; &#160; &#160;HTTP报文是HTTP通信时发送的数据块，本文主要从以下几个方面介绍HTTP报文：HTTP报文结构、方法、状态码、首部。</p>
+<h1 id="报文结构"><a href="#报文结构" class="headerlink" title="报文结构"></a>报文结构</h1><p>&#160; &#160; &#160; &#160;HTTP报文由三部分组成：状态行(请求行 | 响应行)、首部、主体。也有些书籍说是由首部和主体两部分组成，状态行包含在首部中，但绝大多数的说法是由三部分组成。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/1-%E6%8A%A5%E6%96%87%E7%BB%84%E6%88%90.jpg" class="">
+	
+</div>
+
+
+
+<p>&#160; &#160; &#160; &#160;HTTP报文可以分为请求报文和响应报文；请求报文向服务器传达请求，响应报文将请求的结果返回给客户端。以下两图，分别是请求报文以及响应报文的结构图。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/2-%E8%AF%B7%E6%B1%82%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" class="">
+
+<pre><code>&#123;% asset_img 3-响应报文结构图.jpg %&#125;
+</code></pre>
+</div>
+
+
+
+<p>&#160; &#160; &#160; &#160;HTTP报文以状态行开始，跟在后面的是HTTP首部，首部由多个首部字段构成，每行一个首部字段；HTTP首部后是一个空行，然后是报文主体。</p>
+<p>&#160; &#160; &#160; &#160;可以看到，状态行和首部中的每行都是以回车符(\r，%0d，CR)和换行符(\n，%0a，LF)结束，这是因为HTTP规范中行应该使用CRLF结束。另外，首部和主体之间由一空行隔开，或者可以理解为HTTP首部的最后一个字段有两个CRLF。</p>
+<p>&#160; &#160; &#160; &#160;与状态行和首部不同的是，主体是可选的，也就是说报文中不一定要有主体；另外状态行和首部是ASCII文本，主体可包含文本或二进制数据。</p>
+<p>&#160; &#160; &#160; &#160;以上就是HTTP报文的大概结构，下面分别对这三部分进行简要描述。</p>
+<h2 id="状态行"><a href="#状态行" class="headerlink" title="状态行"></a>状态行</h2><p>&#160; &#160; &#160; &#160;HTTP报文以状态行开始，请求报文中的状态行叫请求行，响应报文中的状态行叫响应行。</p>
+<p>&#160; &#160; &#160; &#160;请求行由请求方法、URL、协议版本组成，这些字段都由空格分隔。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/4-%E8%AF%B7%E6%B1%82%E8%A1%8C.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;请求行表明要对哪个资源执行哪个方法，具体有哪些请求方法，文章后面会详细介绍。</p>
+<p>&#160; &#160; &#160; &#160;响应行由协议版本、状态码、原因短语(状态码描述)组成。这些字段同样都由空格分隔。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/5-%E5%93%8D%E5%BA%94%E8%A1%8C.jpg" class="">
+
+</div>
+
+
+<p>&#160; &#160; &#160; &#160;响应行表明了服务器对请求的处理结果，由状态码体现。值得注意的是，原因短语是数字状态码的可读版本，描述数字状态码的含义，便于人理解，只对人有意义，因此以下两种响应行都会被当作成功处理。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 200 NOT OK    </span><br><span class="line">HTTP/1.0 200 OK</span><br></pre></td></tr></table></figure>
+
+<p>&#160; &#160; &#160; &#160;HTTP协议将状态码分成了5类，在下面的章节中会详细介绍。</p>
+<p>&#160; &#160; &#160; &#160;另外请求行和响应行中都包含HTTP版本号，其格式为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP/&lt;major&gt;.&lt;minor&gt;</span><br></pre></td></tr></table></figure>
+
+<p>&#160; &#160; &#160; &#160;major是主版本号，minor是次版本号，使用版本号的目的是规范双方之间通信的格式。</p>
+<h2 id="首部"><a href="#首部" class="headerlink" title="首部"></a>首部</h2><p>&#160; &#160; &#160; &#160;HTTP首部由多个首部字段构成，旨在向报文中添加一些通信过程中所需的重要信息。具体细节文章后面会介绍。</p>
+<h2 id="主体"><a href="#主体" class="headerlink" title="主体"></a>主体</h2><p>&#160; &#160; &#160; &#160;报文主体包含了HTTP所要传输的内容，但并不是所有的报文都有主体。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>&#160; &#160; &#160; &#160;状态行部分讲到请求行中包含请求方法字段，请求方法告诉服务器要做什么。下图是HTTP规范中目前已定义的方法，红框中的是比较常用的方法。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/6-%E6%96%B9%E6%B3%95.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;注意，不是所有的服务器都会实现这些方法，一般都会实现GET和POST方法。另外，请求方法需要大写。</p>
+<h2 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h2><p>&#160; &#160; &#160; &#160;GET：获取&#x2F;查询资源。是最常用的HTTP方法，常用于请求URL指定的资源，服务端经过处理将资源返回给客户端。</p>
+<p>&#160; &#160; &#160; &#160;比如访问百度首页，请求包如下，百度的服务器收到请求后，将百度首页返回给浏览器。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/7-get1.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;有时请求会传递一些参数给服务器，在GET方法中，这些参数会被包含在URL中，放在文件路径后面，用“ ? ”分隔，被称为查询字符串。查询字符串以键值对的形式存在，每个参数的键和值用“&#x3D;”连接，不同参数之间用“&amp;”符号连接。(详情请看URL格式)</p>
+<p>&#160; &#160; &#160; &#160;百度搜索google，抓包可以发现，google被当成了word参数的参数值，放在请求行的URL字段中。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/8-get2.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;特意将请求报文全选，大家可以看到，首部字段下方有一空行，然后空行下面有一光标，这再次体现了HTTP报文的结构，也告诉大家，GET请求是不包含请求主体的。</p>
+<h2 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h2><p>&#160; &#160; &#160; &#160;POST：传输实体主体。常用于向指定资源发送数据，指定的资源会对数据进行处理，然后将处理结果返回给客户端。数据被包含在请求主体中，一般用于表单提交、文件上传等。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/9-post.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;以上是登录时的请求包，请求主体中包含了用户名、密码、验证码、是否记住用户名的参数数据，服务器接收到请求后，会交给index.php文件去处理，然后会返回一个处理结果，可能是登录失败，也可能是跳转到系统内部。</p>
+<p>&#160; &#160; &#160; &#160;可以看到，这些数据的格式和查询字符串的格式一致，Content-Type字段值为application&#x2F;x-www-form-urlencoded，这是POST提交数据的几种格式之一，POST提交数据的几种格式会在以后的文章中介绍。</p>
+<p>&#160; &#160; &#160; &#160;当然，GET方法也可以用来传输数据，但是首先URL的长度受浏览器、服务器、操作系统影响，其次是GET方法提交的参数都会在地址栏中显示出来，不安全，因此涉及到大量数据、敏感数据的时候，一般采用POST方法。</p>
+<h2 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h2><p>&#160; &#160; &#160; &#160;HEAD：获取报文首部。HEAD方法和GET方法很像，但服务器接收到HEAD请求时，在响应中只会返回报文首部，不会返回报文主体。常用于测试请求资源是否存在或是否被修改。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/10-head1.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;GET请求，除了返回报文首部，还返回了主体，经浏览器解析，成为我们眼中的百度首部。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/11-head2.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;HEAD请求，只返回首部，没有主体。</p>
+<h2 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h2><p>&#160; &#160; &#160; &#160;OPTIONS：查询资源支持的方法。用于查询URL指定的资源支持哪些方法，资源支持哪些方法，会在响应包的Allow字段中显示。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/12-option.jpg" class="">
+</div>
+
+
+<h2 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h2><p>&#160; &#160; &#160; &#160;PUT：传输文件。服务器会将请求主体的内容保存到URL指定的资源位置，包含两种情况：URL指定的资源不存在和URL指定的资源存在。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/13-put1.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;如果URL指定的资源不存在，服务器会新建一个文件，将请求主体中的内容保存到新建的文件里，响应码为201。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/14-put2.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;如果URL指定的资源存在，服务器会重置文件内容，用请求主体中的内容覆盖原文件内容，响应码为200或204。</p>
+<p>&#160; &#160; &#160; &#160;需要注意的是，PUT方法自身不带验证机制，任何人都可以执行，存在安全问题，所以网站一般不会使用PUT方法。</p>
+<h2 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h2><p>&#160; &#160; &#160; &#160;DELETE：删除文件，删除URL指定的资源，和PUT相反。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/15-delete1.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;文件删除成功，响应码为204。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/16-delete2.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;若删除的文件不存在，响应码为404。</p>
+<p>&#160; &#160; &#160; &#160;和PUT一样，DELETE方法同样不带验证机制，所以网站一般也不使用DELETE方法。</p>
+<h2 id="TRACE"><a href="#TRACE" class="headerlink" title="TRACE"></a>TRACE</h2><p>&#160; &#160; &#160; &#160;TRACE：路径追踪。主要用于诊断，让服务器将收到的请求放在响应主体中，环回给客户端，这样客户端就可以判断发出的请求是否被请求&#x2F;响应链(在客户端和服务器端之间，请求可能会经过代理、网关、防火墙等应用程序)篡改。</p>
+<p>&#160; &#160; &#160; &#160;TRACE请求不能带有实体的主体部分，TRACE响应的实体主体包含服务器收到的请求。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/17-trace1.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;以上都是方法没被禁用时的响应，如果方法被禁用，响应码为405。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/18-trace2.jpg" class="">
+</div>
+
+
+
+<p>&#160; &#160; &#160; &#160;HTTP是可扩展的。除了使用HTTP&#x2F;1.1规范中定义的方法，有的扩展还定义了一些新的方法，被称为扩展方法。</p>
+<p>&#160; &#160; &#160; &#160;以下是WebDAV HTTP扩展包含的方法。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/19-webdav.jpg" class="">
+</div>
+
+
+
+
+
+
+
+<h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><p>&#160; &#160; &#160; &#160;请求方法告诉服务器要做什么，状态码则告诉客户端，服务器对请求的处理结果：是正常处理了请求，还是出现了错误。HTTP状态码被分成了以下5类。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/20-%E7%8A%B6%E6%80%81%E7%A0%81.jpg" class="">
+</div>
+
+
+<h2 id="1xx——信息提示"><a href="#1xx——信息提示" class="headerlink" title="1xx——信息提示"></a>1xx——信息提示</h2><p>&#160; &#160; &#160; &#160;1xx响应表明服务器端正在处理客户端发过来的请求。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/21-1xx.jpg" class="">
+</div>
+
+<h2 id="2xx——成功"><a href="#2xx——成功" class="headerlink" title="2xx——成功"></a>2xx——成功</h2><p>&#160; &#160; &#160; &#160;2xx响应表明服务器端正常处理了客户端发过来的请求。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/22-2xx.jpg" class=""> 
+</div>
+
+<p>&#160; &#160; &#160; &#160;常用的有：</p>
+<p>&#160; &#160; &#160; &#160;200(成功)、201(已创建)、204(无内容)、206(部分内容)</p>
+<h2 id="3xx——重定向"><a href="#3xx——重定向" class="headerlink" title="3xx——重定向"></a>3xx——重定向</h2><p>&#160; &#160; &#160; &#160;3xx响应表明客户端请求的资源的位置发生了改变，要完成请求，需进一步操作。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/23-3xx1.jpg" class="">
+	
+<pre><code>&#123;% asset_img 24-3xx2.jpg %&#125;
+</code></pre>
+</div>
+
+
+
+<p>&#160; &#160; &#160; &#160;常用的有：301(永久移动)、302(临时移动)</p>
+<h2 id="4xx——客户端错误"><a href="#4xx——客户端错误" class="headerlink" title="4xx——客户端错误"></a>4xx——客户端错误</h2><p>&#160; &#160; &#160; &#160;4xx响应表明客户端发过来的请求有问题，服务器无法处理。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/25-4xx1.jpg" class="">
+
+<pre><code>&#123;% asset_img 26-4xx2.jpg %&#125;
+</code></pre>
+</div>
+
+
+
+<p>&#160; &#160; &#160; &#160;常用的有：</p>
+<p>&#160; &#160; &#160; &#160;400(语法错误)、401(未认证)、403(禁止访问)、404(未找到)、405(方法禁用)</p>
+<h2 id="5xx——服务器错误"><a href="#5xx——服务器错误" class="headerlink" title="5xx——服务器错误"></a>5xx——服务器错误</h2><p>&#160; &#160; &#160; &#160;5xx响应表明服务器自身出了问题，处理不了客户端发过来的请求。</p>
+<div align="center">
+
+<pre><code>&#123;% asset_img 27-5xx1.jpg %&#125;
+
+&#123;% asset_img 27-5xx2.jpg %&#125;
+</code></pre>
+</div>
+
+
+
+<p>&#160; &#160; &#160; &#160;常用的有：500(服务器错误)、502(网关错误)</p>
+<h1 id="首部-1"><a href="#首部-1" class="headerlink" title="首部"></a>首部</h1><p>&#160; &#160; &#160; &#160;HTTP首部由多个首部字段构成，旨在向报文中添加一些通信过程中所需的重要信息。</p>
+<p>&#160; &#160; &#160; &#160;从本质上来说，首部字段是名&#x2F;值对，由字段名和字段值组成，中间用冒号“ : ”隔开，字段值前可包含一个空格。每一行一个首部字段，由CRLF结束行。注意，首部应该以空行(单个CRLF)结束，即使没有主体。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">首部字段名: 字段值</span><br></pre></td></tr></table></figure>
+
+<p>&#160; &#160; &#160; &#160;根据用途，HTTP首部字段被分为4类：通用首部、请求首部、响应首部、实体首部。</p>
+<p>&#160; &#160; &#160; &#160;首部字段不一定都是HTTP&#x2F;1.1规范定义的，其中，HTTP&#x2F;1.1规范中定义的首部字段只有47种。下列表格中的都是HTTP&#x2F;1.1规范定义的首部字段。</p>
+<h2 id="通用首部"><a href="#通用首部" class="headerlink" title="通用首部"></a>通用首部</h2><p>&#160; &#160; &#160; &#160;请求报文和响应报文都可以使用的首部。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/28-%E9%80%9A%E7%94%A8%E9%A6%96%E9%83%A8.jpg" class="">
+</div>
+
+
+<h2 id="请求首部"><a href="#请求首部" class="headerlink" title="请求首部"></a>请求首部</h2><p>&#160; &#160; &#160; &#160;请求报文使用的首部。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/29-%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8.jpg" class="">
+</div>
+
+
+<h2 id="响应首部"><a href="#响应首部" class="headerlink" title="响应首部"></a>响应首部</h2><p>&#160; &#160; &#160; &#160;响应报文使用的首部。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/30-%E5%93%8D%E5%BA%94%E9%A6%96%E9%83%A81.jpg" class="">
+	
+<pre><code>&#123;% asset_img 31-响应首部2.jpg %&#125;
+</code></pre>
+</div>
+
+
+
+
+<h2 id="实体首部"><a href="#实体首部" class="headerlink" title="实体首部"></a>实体首部</h2><p>&#160; &#160; &#160; &#160;实体使用的首部。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/32-%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8.jpg" class="">
+</div>
+
+<p>&#160; &#160; &#160; &#160;HTTP首部除了使用HTTP&#x2F;1.1规范中定义的首部字段，还会使用其他RFC中定义的首部字段，比如Cookie、Set-Cookie等。</p>
+<p>&#160; &#160; &#160; &#160;大家只需要了解常用的首部字段即可，这些常用的字段我会在以后的文章中介绍。</p>
+<h1 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h1><p>&#160; &#160; &#160; &#160;安全小白团是帮助用户了解信息安全技术、安全漏洞相关信息的博客。安全小白团提供的程序(方法)可能带有攻击性，仅供安全研究与教学之用，用户将其信息做其他用途，由用户承担全部法律及连带责任，安全小白团不承担任何法律及连带责任。</p>
+<div align="center">
+	<img src="/HTTP-HTTP%E6%8A%A5%E6%96%87/33-%E5%85%B3%E6%B3%A8%E5%85%AC%E4%BC%97%E5%8F%B7.gif" class="">
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://aqxbt.github.io">安全小白团</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://aqxbt.github.io/HTTP-HTTP%E6%8A%A5%E6%96%87/">https://aqxbt.github.io/HTTP-HTTP%E6%8A%A5%E6%96%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://aqxbt.github.io" target="_blank">安全小白团</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/default_cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" title="每日漏洞 | 跨站请求伪造"><img class="cover" src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">每日漏洞 | 跨站请求伪造</div></div><div class="info-2"><div class="info-item-1">漏洞描述&#160; &#160; &#160; &#160;HTTP的无状态性，导致Web应用程序必须使用会话机制来识别用户。一旦与Web站点建立连接(访问、登录)，用户通常会分配到一个Cookie，随后的请求，都会带上这个Cookie，这样Web站点就很容易分辨请求来自哪个用户，该修改哪个用户的数据。如果从第三方发起对当前站点的请求，该请求也会带上当前站点的Cookie。正是这是这个缺陷，导致了CSRF的产生，利用这个漏洞可以劫持用户执行非意愿的操作。 漏洞检测&#160; &#160; &#160; &#160;CSRF的利用场景常常是在用户已登录的情况下，伪造用户意愿从站外发起请求。更深入剖析：请求能从站外发起(跨站)、请求的参数和值可以伪造(伪造请求)，因此，CSRF的检测也是从这两点入手。 &#160; &#160; &#160; &#160;以转账为例，输入账户和金额，点击Transfer即可完成转账。我们检测该功能是否存在CSRF。  	     是否可跨站&#160; &#160; &#160;...</div></div></div></a><a class="pagination-related" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-rsync%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" title="每日漏洞 | rsync未授权访问"><img class="cover" src="/img/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">每日漏洞 | rsync未授权访问</div></div><div class="info-2"><div class="info-item-1">漏洞描述&#160; &#160; &#160; &#160;rsync是Linux&#x2F;Unix下的一个远程数据同步工具，可通过LAN&#x2F;WAN快速同步多台主机间的文件和目录，默认运行在873端口。由于配置不当，导致任何人可未授权访问rsync，上传本地文件，下载服务器文件。 &#160; &#160; &#160; &#160;rsync未授权访问带来的危害主要有两个：一是造成了严重的信息泄露；二是上传脚本后门文件，远程命令执行。 漏洞检测&#160; &#160; &#160; &#160;rsync未授权访问漏洞只需使用rsync命令即可进行检测。首先使用nmap或其他工具对目标服务器进行端口扫描，当检测到目标服务器开放873端口后，使用rsync命令，查看是否能获取到模块名列表（需要同步的目录），然后查看模块内的文件，rsync未授权访问漏洞的检测就是如此简单。 查看模块名列表&#160; &#160; &#160; &#160;使用如下两条命令之一，列出目标服务器的同步目录： 12rsync ip::rsync...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">安全小白团</div><div class="author-info-description">关注微信公众号noobsec，安全小白团，博客https://aqxbt.github.io，分享自己的成长过程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/aqxbt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div style="text-align: center;">
+  <p>欢迎扫码关注微信公众号</p>
+  <img src="/img/qrcode.png" alt="二维码" style="width: 100%; max-width: 200px;">
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84"><span class="toc-number">2.</span> <span class="toc-text">报文结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">状态行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A6%96%E9%83%A8"><span class="toc-number">2.2.</span> <span class="toc-text">首部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E4%BD%93"><span class="toc-number">2.3.</span> <span class="toc-text">主体</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GET"><span class="toc-number">3.1.</span> <span class="toc-text">GET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#POST"><span class="toc-number">3.2.</span> <span class="toc-text">POST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HEAD"><span class="toc-number">3.3.</span> <span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OPTIONS"><span class="toc-number">3.4.</span> <span class="toc-text">OPTIONS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PUT"><span class="toc-number">3.5.</span> <span class="toc-text">PUT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DELETE"><span class="toc-number">3.6.</span> <span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TRACE"><span class="toc-number">3.7.</span> <span class="toc-text">TRACE</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1xx%E2%80%94%E2%80%94%E4%BF%A1%E6%81%AF%E6%8F%90%E7%A4%BA"><span class="toc-number">4.1.</span> <span class="toc-text">1xx——信息提示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2xx%E2%80%94%E2%80%94%E6%88%90%E5%8A%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2xx——成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3xx%E2%80%94%E2%80%94%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">4.3.</span> <span class="toc-text">3xx——重定向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4xx%E2%80%94%E2%80%94%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%94%99%E8%AF%AF"><span class="toc-number">4.4.</span> <span class="toc-text">4xx——客户端错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5xx%E2%80%94%E2%80%94%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%94%99%E8%AF%AF"><span class="toc-number">4.5.</span> <span class="toc-text">5xx——服务器错误</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E9%83%A8-1"><span class="toc-number">5.</span> <span class="toc-text">首部</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E9%A6%96%E9%83%A8"><span class="toc-number">5.1.</span> <span class="toc-text">通用首部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E9%A6%96%E9%83%A8"><span class="toc-number">5.2.</span> <span class="toc-text">请求首部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%8D%E5%BA%94%E9%A6%96%E9%83%A8"><span class="toc-number">5.3.</span> <span class="toc-text">响应首部</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E9%A6%96%E9%83%A8"><span class="toc-number">5.4.</span> <span class="toc-text">实体首部</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%8D%E8%B4%A3%E5%A3%B0%E6%98%8E"><span class="toc-number">6.</span> <span class="toc-text">免责声明</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/hello-world/" title="Hello World"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/hello-world/" title="Hello World">Hello World</a><time datetime="2025-02-17T05:13:32.904Z" title="发表于 2025-02-17 13:13:32">2025-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux计划任务（1）"/></a><div class="content"><a class="title" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）">Linux计划任务（1）</a><time datetime="2020-08-21T01:17:10.000Z" title="发表于 2020-08-21 09:17:10">2020-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="权限维持-SSH软链接后门"/></a><div class="content"><a class="title" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门">权限维持-SSH软链接后门</a><time datetime="2020-07-30T01:30:14.000Z" title="发表于 2020-07-30 09:30:14">2020-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息收集之js文件"/></a><div class="content"><a class="title" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件">信息收集之js文件</a><time datetime="2020-07-08T03:14:32.000Z" title="发表于 2020-07-08 11:14:32">2020-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="XSS-简介(1)"/></a><div class="content"><a class="title" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)">XSS-简介(1)</a><time datetime="2020-07-08T03:05:45.000Z" title="发表于 2020-07-08 11:05:45">2020-07-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/default_cover.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2025 By 安全小白团</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

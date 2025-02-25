@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>安全小白团 - 安全小白团，noobsec</title><meta name="author" content="安全小白团"><meta name="copyright" content="安全小白团"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关注微信公众号noobsec，安全小白团，博客https:&#x2F;&#x2F;aqxbt.github.io，分享自己的成长过程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="安全小白团">
+<meta property="og:url" content="https://aqxbt.github.io/index.html">
+<meta property="og:site_name" content="安全小白团">
+<meta property="og:description" content="关注微信公众号noobsec，安全小白团，博客https:&#x2F;&#x2F;aqxbt.github.io，分享自己的成长过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aqxbt.github.io/img/logo.png">
+<meta property="article:author" content="安全小白团">
+<meta property="article:tag" content="安全小白团，noobsec">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aqxbt.github.io/img/logo.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://aqxbt.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKG8-pUVAOSCViijEForpmpMy1zRFztsxeiffYayqZg"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6744915718473679',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '安全小白团',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/page/home.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">安全小白团</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">安全小白团</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/hello-world/" title="Hello World"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-02-17T05:13:32.904Z" title="发表于 2025-02-17 13:13:32">2025-02-17</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux计划任务（1）"></a></div><div class="recent-post-info"><a class="article-title" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）">Linux计划任务（1）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-08-21T01:17:10.000Z" title="发表于 2020-08-21 09:17:10">2020-08-21</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Linux/">Linux</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/">计划任务</a></span></div><div class="content">01 何为计划任务&emsp;&emsp;计划任务，顾名思义：计划在未来某个时间点要执行的任务，也可称为定时任务。有一次性的计划任务，也有周期性的计划任务。 &emsp;&emsp;一次性的计划任务就相当于待办，如今天下午三点开会，那么它只会在今天下午三点提醒一次；周期性的计划任务就和我们手机闹钟一样，如设置工作日7点整的闹钟，那么每个工作日7点整闹钟都会准时响。 &emsp;&emsp;但我们平常说的计划任务大多是指周期性的计划任务，用来执行那些需要重复执行的命令和工作，如定时重启、打包、清理日志等等，大大满足了日常运维需求。 &emsp;&emsp;在Linux中，一次性的计划任务由at和batch命令完成；而周期性的计划任务则涉及到两个服务，分别是crond和anacron。今天我们要讲的是crond服务，对应的命令是crontab命令。 &emsp;&emsp;crond 服务是 Linux 下用来周期地执行某种任务或等待处理某些事件的一个守护进程，和 Windows 中的计划任务有些类似。在安装完操作系统后，默认会安装 crond 服务工具，且 crond...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="权限维持-SSH软链接后门"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门">权限维持-SSH软链接后门</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-30T01:30:14.000Z" title="发表于 2020-07-30 09:30:14">2020-07-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/">权限维持</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/">红蓝对抗</a></span></div><div class="content">01 后门命令&emsp;&emsp;经典后门：对sshd建立软链接，即可使用任意密码登录。 123451、创建后门ln -sf /usr/sbin/sshd /路径名/su; /路径名/su -oPort=端口号2、任意密码登ssh 用户名@x.x.x.x -p 端口号       02 原理&emsp;&emsp;在sshd服务配置启用PAM认证的前提下，PAM配置文件中控制标志为sufficient时，只要pam_rootok模块检测uid为0（root）即可成功认证登录。 &emsp;&emsp;通俗点来说，一是sshd服务启用PAM认证机制，在&#x2F;etc&#x2F;ssh&#x2F;sshd_config文件中，设置UsePAM 为yes。如果不启用PAM，系统严格验证用户密码，不能建立后门。 &emsp;&emsp;二是在&#x2F;etc&#x2F;pam.d&#x2F;目录下，对应文件里包含”auth sufficient...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息收集之js文件"></a></div><div class="recent-post-info"><a class="article-title" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件">信息收集之js文件</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-08T03:14:32.000Z" title="发表于 2020-07-08 11:14:32">2020-07-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="XSS-简介(1)"></a></div><div class="recent-post-info"><a class="article-title" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)">XSS-简介(1)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-07-08T03:05:45.000Z" title="发表于 2020-07-08 11:05:45">2020-07-08</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a></span></div><div class="content">XSS是什么&emsp;&emsp;跨站脚本（Cross-Site Script），由于和层叠样式表CSS缩写一样，为避免混淆，因而缩写成XSS。 &emsp;&emsp;XSS是一种常见的Web安全漏洞。由于Web应用程序对用户输入检测不严，导致攻击者可以把恶意代码（通常是HTML和JavaScript）注入到网页中。当其他用户访问时，恶意代码就会被执行。通常被利用发起Cookie窃取、会话劫持、钓鱼等攻击。 XSS为何如此普遍&emsp;&emsp;在工作中不难发现，几乎所有测试任务或多或少都会发现XSS的存在。为何XSS会如此普遍？都是由哪些因素造成的？ &emsp;&emsp;首先Web浏览器本身的设计是不安全的。浏览器只会执行程序，它并不会去判断程序和数据是否恶意；其次是输入输出的交互过程中，没有足够完善的安全防护机制；然后触发XSS的方式简单丰富，只要注入恶意代码即可；最后是开发人员的水平不高和意识不足所导致。 &emsp;&emsp;下图为2013和2017的OWASP TOP...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AEIP-2/" title="网络层 | 网际协议IP(2)"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络层 | 网际协议IP(2)"></a></div><div class="recent-post-info"><a class="article-title" href="/%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AEIP-2/" title="网络层 | 网际协议IP(2)">网络层 | 网际协议IP(2)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-05-01T07:08:51.000Z" title="发表于 2019-05-01 15:08:51">2019-05-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="content">简介&emsp;&emsp;在《网络层 |...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-mv%E3%80%81rm/" title="每日命令 | mv、rm"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日命令 | mv、rm"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-mv%E3%80%81rm/" title="每日命令 | mv、rm">每日命令 | mv、rm</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-19T03:28:37.000Z" title="发表于 2019-04-19 11:28:37">2019-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4/">每日命令</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a></span></div><div class="content">命令简介&#160; &#160; &#160; &#160;之前我们已经讲了文件和目录的创建及复制，今天我们来讲一讲剪切和删除。 &#160; &#160; &#160; &#160;mv——移动、重命名文件        &#160; &#160; &#160; &#160;rm——删除文件           命令详解语法12mv [选项] 参数1 参数2rm [选项] 参数  &#160; &#160; &#160; &#160;mv，move的缩写，移动；rm，remove的缩写，删除。这样介绍，相信校友们更容易理解和记忆命令的用途。 参数1mv [选项] 源文件 目标文件  &#160; &#160; &#160; &#160;在语法上，mv命令和cp命令其实很相似。选项和参数都差不多，也有三种模式。 &#160; &#160; &#160; &#160;不同的是，cp命令是在另一个地方复制一份文件，整个计算机就有了两份内容一样的文件；而mv命令是将文件移动到另一个地方，整个计算机还是只有一份这样的文件。         &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8-%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" title="移动安全  | 逆向基础"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动安全  | 逆向基础"></a></div><div class="recent-post-info"><a class="article-title" href="/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8-%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" title="移动安全  | 逆向基础">移动安全  | 逆向基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-19T03:27:59.000Z" title="发表于 2019-04-19 11:27:59">2019-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a></span></div><div class="content">编译简介&#160; &#160; &#160; &#160;在学习逆向之前，我觉得很有必要了解一下编译原理。编译是将源代码转换成目标代码的过程及动作，通常是将高级语言转变成汇编语言或机器语言。 &#160; &#160; &#160; &#160;在这里，首先简单介绍一下高级语言、汇编语言以及机器语言，然后再介绍APK的编译过程，为后续逆向打下基础。 &#160; &#160; &#160; &#160;当然，编译涉及到的知识远远不止这些，这里我只是结合APK的编译过程，选择性地介绍一些需要的知识而已。避免介绍过多的编译知识，反而导致大家无法理解的情况发生。 &#160; &#160; &#160; &#160;如果有兴趣，校友们可以去查阅相关书籍，了解更多关于编译的知识。 编译详解编译&#160; &#160; &#160; &#160;编译通常涉及到三种语言：高级语言、汇编语言、机器语言。 &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AEIP-1/" title="网络层 | 网际协议IP(1)"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络层 | 网际协议IP(1)"></a></div><div class="recent-post-info"><a class="article-title" href="/%E7%BD%91%E7%BB%9C%E5%B1%82-%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AEIP-1/" title="网络层 | 网际协议IP(1)">网络层 | 网际协议IP(1)</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-04-19T03:26:59.000Z" title="发表于 2019-04-19 11:26:59">2019-04-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a></span></div><div class="content">简介&#160; &#160; &#160; &#160;Internet Protocol，网际协议，是TCP&#x2F;IP体系中网络层的主要协议。 &#160; &#160; &#160; &#160;网络层的任务是为互联网上的不同主机提供通信服务，主要完成两件事：对传输层的数据进行封装、将封装后的数据从源地址转发到目的地址。因此IP协议的主要任务也是寻址路由、封包解包。 &#160; &#160; &#160; &#160;在《网际协议IP》系列文章中，主要介绍IP地址的格式及分类、一些特殊的IP地址、划分子网、构成超网、数据报格式、路由、与网际协议IP相关的一些协议等方面的知识，旨在希望校友们能对网际协议IP有比较系统的了解。当然也不排除误写漏写的情况，如果有校友发现，请在公众号留言，我会及时修改。 &#160; &#160; &#160; &#160;下面开始《网际协议IP》系列第一部分的学习。 IP地址详解&#160; &#160; &#160; &#160;Internet Protocol...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-cp/" title="每日命令 | cp"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日命令 | cp"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-cp/" title="每日命令 | cp">每日命令 | cp</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-02-18T01:41:42.000Z" title="发表于 2019-02-18 09:41:42">2019-02-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4/">每日命令</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a></span></div><div class="content">命令简介&#160; &#160; &#160; &#160;上回我们介绍了文件和目录的创建，今天我们来介绍一下文件和目录的复制。 1cp——复制文件或目录   	           命令详解语法1cp [选项] 参数1 参数2  &#160; &#160; &#160; &#160;以上是cp命令的语法，可以看到cp命令在使用时必须提供两个参数。 参数&#160; &#160; &#160; &#160;参数1代表源文件，即要复制哪个文件或目录；参数2代表目标文件，即复制到哪个文件或目录。 1cp [选项] 源文件 目标文件   	   &#160; &#160; &#160; &#160;复制docker.sh，只提供一个参数，系统提示缺少一个目标文件。提供两个参数后，成功将docker.sh复制到docker1.sh。 &#160; &#160; &#160; &#160;cp命令有三种主要的操作模式： 123文件复制到文件文件复制到目录目录复制到目录  &#160; &#160; &#160;...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">安全小白团</div><div class="author-info-description">关注微信公众号noobsec，安全小白团，博客https://aqxbt.github.io，分享自己的成长过程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/aqxbt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div style="text-align: center;">
+  <p>欢迎扫码关注微信公众号</p>
+  <img src="/img/qrcode.png" alt="二维码" style="width: 100%; max-width: 200px;">
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/hello-world/" title="Hello World"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/hello-world/" title="Hello World">Hello World</a><time datetime="2025-02-17T05:13:32.904Z" title="发表于 2025-02-17 13:13:32">2025-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux计划任务（1）"/></a><div class="content"><a class="title" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）">Linux计划任务（1）</a><time datetime="2020-08-21T01:17:10.000Z" title="发表于 2020-08-21 09:17:10">2020-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="权限维持-SSH软链接后门"/></a><div class="content"><a class="title" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门">权限维持-SSH软链接后门</a><time datetime="2020-07-30T01:30:14.000Z" title="发表于 2020-07-30 09:30:14">2020-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息收集之js文件"/></a><div class="content"><a class="title" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件">信息收集之js文件</a><time datetime="2020-07-08T03:14:32.000Z" title="发表于 2020-07-08 11:14:32">2020-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="XSS-简介(1)"/></a><div class="content"><a class="title" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)">XSS-简介(1)</a><time datetime="2020-07-08T03:05:45.000Z" title="发表于 2020-07-08 11:05:45">2020-07-08</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HTTP/"><span class="card-category-list-name">HTTP</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"><span class="card-category-list-name">信息收集</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/"><span class="card-category-list-name">权限维持</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4/"><span class="card-category-list-name">每日命令</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/"><span class="card-category-list-name">每日漏洞</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">渗透测试</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">移动安全</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/" style="font-size: 1.1em; color: #999">红蓝对抗</a> <a href="/tags/%E6%83%85%E6%8A%A5%E6%90%9C%E9%9B%86/" style="font-size: 1.1em; color: #999">情报搜集</a> <a href="/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/" style="font-size: 1.1em; color: #999">计划任务</a> <a href="/tags/HTTP/" style="font-size: 1.3em; color: #99a1ac">HTTP</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 1.1em; color: #999">未授权访问</a> <a href="/tags/XSS/" style="font-size: 1.1em; color: #999">XSS</a> <a href="/tags/CSRF/" style="font-size: 1.1em; color: #999">CSRF</a> <a href="/tags/Linux/" style="font-size: 1.5em; color: #99a9bf">Linux</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2020/08/">
+            <span class="card-archive-list-date">
+              八月 2020
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2020/07/">
+            <span class="card-archive-list-date">
+              七月 2020
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/05/">
+            <span class="card-archive-list-date">
+              五月 2019
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/04/">
+            <span class="card-archive-list-date">
+              四月 2019
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/02/">
+            <span class="card-archive-list-date">
+              二月 2019
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/01/">
+            <span class="card-archive-list-date">
+              一月 2019
+            </span>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">42.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-02-25T12:59:33.294Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/page/home.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2025 By 安全小白团</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

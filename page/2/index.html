@@ -1,0 +1,233 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>安全小白团 - 安全小白团，noobsec</title><meta name="author" content="安全小白团"><meta name="copyright" content="安全小白团"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="关注微信公众号noobsec，安全小白团，博客https:&#x2F;&#x2F;aqxbt.github.io，分享自己的成长过程">
+<meta property="og:type" content="website">
+<meta property="og:title" content="安全小白团">
+<meta property="og:url" content="https://aqxbt.github.io/page/2/index.html">
+<meta property="og:site_name" content="安全小白团">
+<meta property="og:description" content="关注微信公众号noobsec，安全小白团，博客https:&#x2F;&#x2F;aqxbt.github.io，分享自己的成长过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aqxbt.github.io/img/logo.png">
+<meta property="article:author" content="安全小白团">
+<meta property="article:tag" content="安全小白团，noobsec">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aqxbt.github.io/img/logo.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="https://aqxbt.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="JKG8-pUVAOSCViijEForpmpMy1zRFztsxeiffYayqZg"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle = window.adsbygoogle || []).push({
+  google_ad_client: 'ca-pub-6744915718473679',
+  enable_page_level_ads: 'true'
+});</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '安全小白团',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url(/img/page/home.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"><span class="site-name">安全小白团</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 图库</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">安全小白团</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-touch%E3%80%81mkdir/" title="每日命令 | touch、mkdir"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日命令 | touch、mkdir"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-touch%E3%80%81mkdir/" title="每日命令 | touch、mkdir">每日命令 | touch、mkdir</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-29T08:37:16.000Z" title="发表于 2019-01-29 16:37:16">2019-01-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4/">每日命令</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a></span></div><div class="content">命令简介&#160; &#160; &#160; &#160;任何事物都有生命周期，Linux中的文件和目录也一样：创建、修改、删除。今天我们来讲一讲文件和目录的创建。 &#160; &#160; &#160; &#160;touch——修改文件的访问时间和修改时间（可用来创建空文件）  	      &#160; &#160; &#160; &#160;mkdir——make directory，创建目录  	          命令详解语法12mkdir  [选项] 目录名touch  [选项] 文件名  &#160; &#160; &#160; &#160;mkdir和touch两条命令，都有选项和参数。只不过mkdir命令的参数是目录名，而touch命令的参数是文件名而已。 &#160; &#160; &#160; &#160;这里跟大家强调一下：选项和参数的可选，不同命令的要求是不一样的。 &#160; &#160; &#160; &#160;选项对命令来说，一般都是可选的。参数是否可选，不同命令有各自的规定。如果可选，我会添加方括号“[...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-pwd%E3%80%81cd/" title="每日命令 | pwd、cd"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日命令 | pwd、cd"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4-pwd%E3%80%81cd/" title="每日命令 | pwd、cd">每日命令 | pwd、cd</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-22T07:44:12.000Z" title="发表于 2019-01-22 15:44:12">2019-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4/">每日命令</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/Linux/">Linux</a></span></div><div class="content">命令简介&#160; &#160; &#160; &#160;上回说到《每日命令 | ls》，今天我们来说一说pwd命令和cd命令。 &#160; &#160; &#160; &#160;pwd命令——返回当前工作目录名称。  	      &#160; &#160; &#160; &#160;cd命令——改变工作目录。  	      &#160; &#160; &#160; &#160;什么是工作目录？ &#160; &#160; &#160; &#160;举个例子：我在北京上班，那我的工作地点就是北京；后来我到上海上班去了，那我的工作地点就变成上海了。 &#160; &#160; &#160; &#160;在linux中，我们当前在哪个目录下，那个目录就被称为当前的工作目录，因为我们所有的命令(工作)都是在当前目录下执行的。 命令详解语法123pwd  [选项] cd  [选项] [目录]  &#160; &#160; &#160; &#160;pwd命令只有选项，没有参数。因为它的作用是输出当前的工作目录名，所以不需要参数。 &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/PTES-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E6%A0%87%E5%87%86/" title="PTES | 渗透测试执行标准"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PTES | 渗透测试执行标准"></a></div><div class="recent-post-info"><a class="article-title" href="/PTES-%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%89%A7%E8%A1%8C%E6%A0%87%E5%87%86/" title="PTES | 渗透测试执行标准">PTES | 渗透测试执行标准</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:39:21.000Z" title="发表于 2019-01-12 14:39:21">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a></span></div><div class="content">&#160; &#160; &#160; &#160;“入门渗透测试，首先需要了解渗透测试的流程、步骤与方法。尽管渗透目标的环境各不相同，但依然可以用一些标准化的方法体系进行规范和限制。”  	   &#160; &#160; &#160; &#160;目前渗透测试方法体系标准比较流行的有5个，其中PTES渗透测试执行标准得到了安全业界的普遍认同，它具体包括以下7个阶段。  	         前期交互阶段&#160; &#160; &#160; &#160;前期交互阶段要做的事主要有以下几件： &#160; &#160; &#160; &#160;介绍和解释可用的工具和技术，根据客户需求为客户提供量身定制的测试方案。可用于渗透测试的工具和技术有很多，但客户环境不一定支持，比如设备老旧，不能使用工具进行高强度的扫描行为；或者白天业务量大，只能在凌晨一两点才能测试；再或者不能进行弱口令扫描，账号锁定后会对业务产生影响等等，这些都需要事先沟通好，以免测试对客户生产环境造成影响。 &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E4%BC%9A%E8%AF%9D%E5%9B%BA%E5%AE%9A/" title="每日漏洞 | 会话固定"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日漏洞 | 会话固定"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E4%BC%9A%E8%AF%9D%E5%9B%BA%E5%AE%9A/" title="每日漏洞 | 会话固定">每日漏洞 | 会话固定</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:38:55.000Z" title="发表于 2019-01-12 14:38:55">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/">每日漏洞</a></span></div><div class="content">漏洞描述&#160; &#160; &#160; &#160;当用户成功验证而应用程序不更新cookie时，这个时候就存在会话固定漏洞，攻击者可利用此漏洞发起会话劫持。 &#160; &#160; &#160; &#160;HTTP的无状态性，导致Web应用程序必须使用会话机制来识别用户。如果用户未登录时的会话ID和登录后的会话ID保持一致，那么攻击者可以迫使受害者使用一个已知(有效)的会话ID，当受害者通过身份验证，攻击者就可以利用这个会话ID进入验证后的会话（登录状态）。 漏洞检测&#160; &#160; &#160; &#160;在理解漏洞原理后，怎么检测会话固定漏洞就很明显了，只需查看登录前和登录后的会话ID是否一致即可。查看的方式有多种，如浏览器F12，抓包工具等。 登录前查看客户端的会话ID 	   输入账号密码通过验证后查看客户端的会话ID 	   &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/" title="每日漏洞 | 跨站脚本攻击"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日漏洞 | 跨站脚本攻击"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/" title="每日漏洞 | 跨站脚本攻击">每日漏洞 | 跨站脚本攻击</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:38:31.000Z" title="发表于 2019-01-12 14:38:31">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/">每日漏洞</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/XSS/">XSS</a></span></div><div class="content">漏洞描述&#160; &#160; &#160; &#160;当应用程序没有验证输入数据并产生输出时，这个时候就会产生XSS漏洞，攻击者可利用此漏洞进行Cookie窃取、会话劫持、钓鱼等攻击。 &#160; &#160; &#160; &#160;“一切输入都是不安全的”，Web应用的漏洞几乎都是由一个原因造成：不能在使用前正确验证输入的数据。XSS便是其中之一，攻击者可以在网页中写入恶意脚本，用户访问或点击的时候就会被执行。通常是由JavaScript编写，偶尔也会使用ActionScript、VBScript。XSS能利用到何种程度，取决于如何编写脚本，当然，和上下文环境也有关系。 漏洞检测&#160; &#160; &#160; &#160;要判断系统是否存在XSS，只需要测试能否操纵应用程序参数输入，使其产生恶意输出即可，因此XSS漏洞的检测，有三大要点：输入点，输出点，以及恶意输出。 &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E7%94%A8%E6%88%B7%E6%9E%9A%E4%B8%BE/" title="每日漏洞 | 用户枚举"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日漏洞 | 用户枚举"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E7%94%A8%E6%88%B7%E6%9E%9A%E4%B8%BE/" title="每日漏洞 | 用户枚举">每日漏洞 | 用户枚举</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:38:16.000Z" title="发表于 2019-01-12 14:38:16">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/">每日漏洞</a></span></div><div class="content">漏洞描述&#160; &#160; &#160; &#160;由于错误配置或设计缺陷，当向系统提交有效账户和无效账户时，服务器会有不同的响应。利用响应的不同，攻击者可以获取到系统已经存在的账户，可用于暴力破解，进一步获取账户的登录密码。 漏洞检测&#160; &#160; &#160; &#160;用户枚举漏洞的检测比较简单，只需用不同的账户去登录，查看服务器响应是否有差异即可（查看页面、查看响应包等）。 有效账户&#160; &#160; &#160; &#160;输入系统存在的账户和任意密码，系统响应密码错误。  	   无效账户&#160; &#160; &#160; &#160;输入系统不存在的账户和任意密码，系统响应用户名不存在。  	   &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" title="每日漏洞 | 跨站请求伪造"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日漏洞 | 跨站请求伪造"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/" title="每日漏洞 | 跨站请求伪造">每日漏洞 | 跨站请求伪造</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:38:02.000Z" title="发表于 2019-01-12 14:38:02">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/">每日漏洞</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/CSRF/">CSRF</a></span></div><div class="content">漏洞描述&#160; &#160; &#160; &#160;HTTP的无状态性，导致Web应用程序必须使用会话机制来识别用户。一旦与Web站点建立连接(访问、登录)，用户通常会分配到一个Cookie，随后的请求，都会带上这个Cookie，这样Web站点就很容易分辨请求来自哪个用户，该修改哪个用户的数据。如果从第三方发起对当前站点的请求，该请求也会带上当前站点的Cookie。正是这是这个缺陷，导致了CSRF的产生，利用这个漏洞可以劫持用户执行非意愿的操作。 漏洞检测&#160; &#160; &#160; &#160;CSRF的利用场景常常是在用户已登录的情况下，伪造用户意愿从站外发起请求。更深入剖析：请求能从站外发起(跨站)、请求的参数和值可以伪造(伪造请求)，因此，CSRF的检测也是从这两点入手。 &#160; &#160; &#160; &#160;以转账为例，输入账户和金额，点击Transfer即可完成转账。我们检测该功能是否存在CSRF。  	     是否可跨站&#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/HTTP-HTTP%E6%8A%A5%E6%96%87/" title="HTTP | HTTP报文"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTTP | HTTP报文"></a></div><div class="recent-post-info"><a class="article-title" href="/HTTP-HTTP%E6%8A%A5%E6%96%87/" title="HTTP | HTTP报文">HTTP | HTTP报文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:37:04.000Z" title="发表于 2019-01-12 14:37:04">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/HTTP/">HTTP</a></span></div><div class="content">概述&#160; &#160; &#160; &#160;客户端与服务器端之间的通信，通过HTTP协议，以HTTP报文的形式来实现数据的交互。 &#160; &#160; &#160; &#160;HTTP报文是HTTP通信时发送的数据块，本文主要从以下几个方面介绍HTTP报文：HTTP报文结构、方法、状态码、首部。 报文结构&#160; &#160; &#160; &#160;HTTP报文由三部分组成：状态行(请求行 | 响应行)、首部、主体。也有些书籍说是由首部和主体两部分组成，状态行包含在首部中，但绝大多数的说法是由三部分组成。  	 	     &#160; &#160; &#160; &#160;HTTP报文可以分为请求报文和响应报文；请求报文向服务器传达请求，响应报文将请求的结果返回给客户端。以下两图，分别是请求报文以及响应报文的结构图。  	  &#123;% asset_img 3-响应报文结构图.jpg %&#125;      &#160; &#160; &#160;...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-rsync%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" title="每日漏洞 | rsync未授权访问"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日漏洞 | rsync未授权访问"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-rsync%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" title="每日漏洞 | rsync未授权访问">每日漏洞 | rsync未授权访问</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:36:39.000Z" title="发表于 2019-01-12 14:36:39">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/">每日漏洞</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/">未授权访问</a></span></div><div class="content">漏洞描述&#160; &#160; &#160; &#160;rsync是Linux&#x2F;Unix下的一个远程数据同步工具，可通过LAN&#x2F;WAN快速同步多台主机间的文件和目录，默认运行在873端口。由于配置不当，导致任何人可未授权访问rsync，上传本地文件，下载服务器文件。 &#160; &#160; &#160; &#160;rsync未授权访问带来的危害主要有两个：一是造成了严重的信息泄露；二是上传脚本后门文件，远程命令执行。 漏洞检测&#160; &#160; &#160; &#160;rsync未授权访问漏洞只需使用rsync命令即可进行检测。首先使用nmap或其他工具对目标服务器进行端口扫描，当检测到目标服务器开放873端口后，使用rsync命令，查看是否能获取到模块名列表（需要同步的目录），然后查看模块内的文件，rsync未授权访问漏洞的检测就是如此简单。 查看模块名列表&#160; &#160; &#160; &#160;使用如下两条命令之一，列出目标服务器的同步目录： 12rsync ip::rsync...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84HTTP%E6%96%B9%E6%B3%95/" title="每日漏洞 | 不安全的HTTP方法"><img class="post-bg" src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="每日漏洞 | 不安全的HTTP方法"></a></div><div class="recent-post-info"><a class="article-title" href="/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84HTTP%E6%96%B9%E6%B3%95/" title="每日漏洞 | 不安全的HTTP方法">每日漏洞 | 不安全的HTTP方法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2019-01-12T06:36:18.000Z" title="发表于 2019-01-12 14:36:18">2019-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/">每日漏洞</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/HTTP/">HTTP</a></span></div><div class="content">漏洞描述&#160; &#160; &#160; &#160;《HTTP | HTTP报文》中介绍了HTTP的请求方法。在这些方法中，HTTP定义了一组被称为安全方法的方法：GET、HEAD、OPTIONS、TRACE，这些方法不会产生什么动作，不会在服务器上产生结果，只是简单获取信息。相对的，能产生动作的方法就会被认为是不安全的HTTP方法。 &#160; &#160; &#160; &#160;注意，安全方法不一定什么动作都不执行，比如在登陆时用GET方法传输数据，这个时候GET方法也会产生动作。就比如钱是用来花的，你硬要用来擦屁屁，这也没办法。  	   &#160; &#160; &#160; &#160;在HTTP认为的那些不安全的HTTP方法中，安全界认为PUT、DELETE、TRACE是不安全的，另外WebDAV中的几个方法，RFC 5789中的PATCH方法也被认为是不安全的。（TRACE容易引发XST攻击，PATCH修改资源的部分内容，PUT&#x2F;DELETE没有认证机制等原因，不仅仅因为它们会产生结果）  	         漏洞检测&#160;...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/logo.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">安全小白团</div><div class="author-info-description">关注微信公众号noobsec，安全小白团，博客https://aqxbt.github.io，分享自己的成长过程</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/aqxbt"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div style="text-align: center;">
+  <p>欢迎扫码关注微信公众号</p>
+  <img src="/img/qrcode.png" alt="二维码" style="width: 100%; max-width: 200px;">
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/hello-world/" title="Hello World"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/hello-world/" title="Hello World">Hello World</a><time datetime="2025-02-17T05:13:32.904Z" title="发表于 2025-02-17 13:13:32">2025-02-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux计划任务（1）"/></a><div class="content"><a class="title" href="/Linux%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1-1/" title="Linux计划任务（1）">Linux计划任务（1）</a><time datetime="2020-08-21T01:17:10.000Z" title="发表于 2020-08-21 09:17:10">2020-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="权限维持-SSH软链接后门"/></a><div class="content"><a class="title" href="/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81-SSH%E8%BD%AF%E9%93%BE%E6%8E%A5%E5%90%8E%E9%97%A8/" title="权限维持-SSH软链接后门">权限维持-SSH软链接后门</a><time datetime="2020-07-30T01:30:14.000Z" title="发表于 2020-07-30 09:30:14">2020-07-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="信息收集之js文件"/></a><div class="content"><a class="title" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B9%8Bjs%E6%96%87%E4%BB%B6/" title="信息收集之js文件">信息收集之js文件</a><time datetime="2020-07-08T03:14:32.000Z" title="发表于 2020-07-08 11:14:32">2020-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)"><img src="/img/default_cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="XSS-简介(1)"/></a><div class="content"><a class="title" href="/XSS-%E7%AE%80%E4%BB%8B-1/" title="XSS-简介(1)">XSS-简介(1)</a><time datetime="2020-07-08T03:05:45.000Z" title="发表于 2020-07-08 11:05:45">2020-07-08</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HTTP/"><span class="card-category-list-name">HTTP</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"><span class="card-category-list-name">信息收集</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%83%E9%99%90%E7%BB%B4%E6%8C%81/"><span class="card-category-list-name">权限维持</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%AF%8F%E6%97%A5%E5%91%BD%E4%BB%A4/"><span class="card-category-list-name">每日命令</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%AF%8F%E6%97%A5%E6%BC%8F%E6%B4%9E/"><span class="card-category-list-name">每日漏洞</span><span class="card-category-list-count">9</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"><span class="card-category-list-name">渗透测试</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/"><span class="card-category-list-name">移动安全</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/" style="font-size: 1.1em; color: #999">红蓝对抗</a> <a href="/tags/%E6%83%85%E6%8A%A5%E6%90%9C%E9%9B%86/" style="font-size: 1.1em; color: #999">情报搜集</a> <a href="/tags/%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/" style="font-size: 1.1em; color: #999">计划任务</a> <a href="/tags/HTTP/" style="font-size: 1.3em; color: #99a1ac">HTTP</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 1.1em; color: #999">未授权访问</a> <a href="/tags/XSS/" style="font-size: 1.1em; color: #999">XSS</a> <a href="/tags/CSRF/" style="font-size: 1.1em; color: #999">CSRF</a> <a href="/tags/Linux/" style="font-size: 1.5em; color: #99a9bf">Linux</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2020/08/">
+            <span class="card-archive-list-date">
+              八月 2020
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2020/07/">
+            <span class="card-archive-list-date">
+              七月 2020
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/05/">
+            <span class="card-archive-list-date">
+              五月 2019
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/04/">
+            <span class="card-archive-list-date">
+              四月 2019
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/02/">
+            <span class="card-archive-list-date">
+              二月 2019
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2019/01/">
+            <span class="card-archive-list-date">
+              一月 2019
+            </span>
+            <span class="card-archive-list-count">15</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">42.4k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-02-25T12:59:33.294Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/page/home.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2025 By 安全小白团</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.3</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
